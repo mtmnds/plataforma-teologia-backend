@@ -14,6 +14,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 @RestController
+@CrossOrigin
 @RequestMapping("material")
 public class MaterialController {
 
