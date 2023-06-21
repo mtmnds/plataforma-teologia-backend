@@ -17,6 +17,7 @@ import br.facens.plataformateologia.domain.service.StringUtilsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,6 +58,11 @@ public class MaterialServiceImpl implements MaterialService {
 
     public List<GenericMaterialListDTO> listarMateriaisPaginacao(int numPagina, int qtdRegistros) {
         List<MaterialEntity> materiais = materialRepository.findAllByOrderByDataPublicacaoDesc();
+
+        if (materiais.size() == 0) {
+            return new ArrayList<>();
+        }
+
         int inicio = (numPagina - 1) * qtdRegistros;
         int fim = inicio + qtdRegistros + 1;
 

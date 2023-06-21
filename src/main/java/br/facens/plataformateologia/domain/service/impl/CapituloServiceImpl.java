@@ -37,6 +37,7 @@ public class CapituloServiceImpl implements CapituloService {
                 .capituloId(capitulo.getId().toString())
                 .materialId(capitulo.getMaterial().getId().toString())
                 .tituloMaterial(capitulo.getMaterial().getTitulo())
+                .tituloCapitulo(capitulo.getTitulo())
                 .sequencia(capitulo.getSequencia())
                 .paragrafos(capitulo.getParagrafos())
                 .build();

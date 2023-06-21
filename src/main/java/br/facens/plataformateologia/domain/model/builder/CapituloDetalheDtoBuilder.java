@@ -10,6 +10,7 @@ public interface CapituloDetalheDtoBuilder {
     CapituloDetalheDtoBuilder capituloId(String capituloId);
     CapituloDetalheDtoBuilder materialId(String materialId);
     CapituloDetalheDtoBuilder tituloMaterial(String tituloMaterial);
+    CapituloDetalheDtoBuilder tituloCapitulo(String tituloCapitulo);
     CapituloDetalheDtoBuilder sequencia(int sequencia);
     CapituloDetalheDtoBuilder paragrafos(List<ParagrafoEntity> paragrafos);
     CapituloDetalheDTO build();

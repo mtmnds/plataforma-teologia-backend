@@ -7,6 +7,7 @@ public class CapituloDetalheDTO {
     private String capituloId;
     private String materialId;
     private String tituloMaterial;
+    private String tituloCapitulo;
     private int sequencia;
     List<GenericParagrafoDTO> paragrafos;
 
@@ -32,6 +33,14 @@ public class CapituloDetalheDTO {
 
     public void setTituloMaterial(String tituloMaterial) {
         this.tituloMaterial = tituloMaterial;
+    }
+
+    public String getTituloCapitulo() {
+        return tituloCapitulo;
+    }
+
+    public void setTituloCapitulo(String tituloCapitulo) {
+        this.tituloCapitulo = tituloCapitulo;
     }
 
     public int getSequencia() {

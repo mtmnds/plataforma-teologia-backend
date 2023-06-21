@@ -32,6 +32,12 @@ public class CapituloDetalheDtoBuilderImpl implements CapituloDetalheDtoBuilder 
     }
 
     @Override
+    public CapituloDetalheDtoBuilder tituloCapitulo(String tituloCapitulo) {
+        this.capituloDetalheDTO.setTituloCapitulo(tituloCapitulo);
+        return this;
+    }
+
+    @Override
     public CapituloDetalheDtoBuilder sequencia(int sequencia) {
         this.capituloDetalheDTO.setSequencia(sequencia);
         return this;
