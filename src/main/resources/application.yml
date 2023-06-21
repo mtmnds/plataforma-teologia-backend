@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: create
+
+  datasource:
+    url: jdbc:h2:file:C:/SpringBoot/Database/plataforma-teologia
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 1234
+    sql-script-encoding: UTF-8
+
+  sql:
+    init:
+      mode: always
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
