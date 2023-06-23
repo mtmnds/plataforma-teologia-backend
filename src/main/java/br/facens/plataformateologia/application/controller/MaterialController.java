@@ -6,12 +6,12 @@ import br.facens.plataformateologia.domain.model.dto.GenericMaterialListDTO;
 import br.facens.plataformateologia.domain.model.dto.MaterialDetalheDTO;
 import br.facens.plataformateologia.domain.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 
 @RestController
 @CrossOrigin
@@ -27,6 +27,7 @@ public class MaterialController {
         this.materialService = materialService;
     }
 
+    @Cacheable(value = "material/home")
     @RequestMapping(
             value = "/home",
             method = RequestMethod.GET,
@@ -41,6 +42,7 @@ public class MaterialController {
         }
     }
 
+    @Cacheable(value = "material/paginacao")
     @RequestMapping(
             value = {"", "/"},
             method = RequestMethod.GET,
@@ -58,6 +60,7 @@ public class MaterialController {
         }
     }
 
+    @Cacheable(value = "material/detalhe")
     @RequestMapping(
             value = "/{materialId}",
             method = RequestMethod.GET,

@@ -3,6 +3,7 @@ package br.facens.plataformateologia.application.controller;
 import br.facens.plataformateologia.domain.model.dto.CapituloDetalheDTO;
 import br.facens.plataformateologia.domain.service.CapituloService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,7 @@ public class CapituloController {
         this.capituloService = capituloService;
     }
 
+    @Cacheable(value = "capitulo/detalhe")
     @RequestMapping(
             value = "/{capituloId}",
             method = RequestMethod.GET,

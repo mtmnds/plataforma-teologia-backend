@@ -25,3 +25,15 @@ spring:
       settings:
         trace: false
         web-allow-others: false
+
+cache:
+  material:
+    home:
+      ttl-miliseconds: 300000
+    paginacao:
+      ttl-miliseconds: 300000
+    detalhe:
+      ttl-miliseconds: 300000
+  capitulo:
+    detalhe:
+      ttl-miliseconds: 300000
