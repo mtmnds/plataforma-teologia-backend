@@ -5,37 +5,37 @@ import br.facens.plataformateologia.domain.model.builder.MaterialDetalheDtoBuild
 import br.facens.plataformateologia.domain.model.builder.impl.CadastrarMaterialResponseBuilderImpl;
 import br.facens.plataformateologia.domain.model.builder.impl.GenericMaterialListDtoBuilderImpl;
 import br.facens.plataformateologia.domain.model.builder.impl.MaterialDetalheDtoBuilderImpl;
-import br.facens.plataformateologia.domain.model.dto.CadastrarMaterialRequestDTO;
-import br.facens.plataformateologia.domain.model.dto.CadastrarMaterialResponseDTO;
-import br.facens.plataformateologia.domain.model.dto.GenericMaterialListDTO;
-import br.facens.plataformateologia.domain.model.dto.MaterialDetalheDTO;
-import br.facens.plataformateologia.domain.model.entity.MaterialEntity;
+import br.facens.plataformateologia.domain.model.dto.*;
+import br.facens.plataformateologia.domain.model.entity.*;
 import br.facens.plataformateologia.domain.model.mapper.CadastrarMaterialMapper;
 import br.facens.plataformateologia.domain.repository.MaterialRepository;
+import br.facens.plataformateologia.domain.service.EstudoService;
 import br.facens.plataformateologia.domain.service.MaterialService;
 import br.facens.plataformateologia.domain.service.StringUtilsService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class MaterialServiceImpl implements MaterialService {
 
     private MaterialRepository materialRepository;
     private StringUtilsService stringUtilsService;
+    private EstudoService estudoService;
     private CadastrarMaterialMapper cadastrarMaterialMapper;
 
     @Autowired
     public MaterialServiceImpl(
             MaterialRepository materialRepository,
             StringUtilsService stringUtilsService,
+            EstudoService estudoService,
             CadastrarMaterialMapper cadastrarMaterialMapper
     ) {
         this.materialRepository = materialRepository;
         this.stringUtilsService = stringUtilsService;
+        this.estudoService = estudoService;
         this.cadastrarMaterialMapper = cadastrarMaterialMapper;
     }
 
@@ -103,9 +103,57 @@ public class MaterialServiceImpl implements MaterialService {
     }
 
     @Override
+    @Transactional
     public CadastrarMaterialResponseDTO cadastrar(CadastrarMaterialRequestDTO requestDto) {
         MaterialEntity material = cadastrarMaterialMapper.map(requestDto);
         materialRepository.save(material);
+
+        Map<String, ParagrafoEntity> hashsParagrafos = new HashMap<>();
+        for (CapituloEntity capitulo : material.getCapitulos()) {
+            for (ParagrafoEntity paragrafo : capitulo.getParagrafos()) {
+                String hash = stringUtilsService.createStringHash(
+                        capitulo.getTitulo(),
+                        capitulo.getDescricao(),
+                        paragrafo.getTitulo(),
+                        paragrafo.getConteudo()
+                );
+                hashsParagrafos.put(hash, paragrafo);
+            }
+        }
+
+        for (CadastrarMaterialRequestCapituloDTO capituloDTO : requestDto.getCapitulos()) {
+            for (CadastrarMaterialRequestParagrafoDTO paragrafoDTO : capituloDTO.getParagrafos()) {
+                if (paragrafoDTO.getEstudos() != null && paragrafoDTO.getEstudos().size() > 0) {
+                    String hash = stringUtilsService.createStringHash(
+                            capituloDTO.getTitulo(),
+                            capituloDTO.getDescricao(),
+                            paragrafoDTO.getTitulo(),
+                            paragrafoDTO.getConteudo()
+                    );
+
+                    ParagrafoEntity paragrafoEntity = hashsParagrafos.get(hash);
+
+                    if (paragrafoEntity == null) {
+                        continue;
+                    }
+
+                    List<CadastrarMaterialRequestEstudoDTO> estudosParagrafoCadastrar = paragrafoDTO.getEstudos();
+                    List<EstudoEntity> estudosEntities = cadastrarMaterialMapper.map(estudosParagrafoCadastrar);
+                    this.estudoService.salvarEstudos(estudosEntities);
+
+                    List<EstudoParagrafoEntity> estudoParagrafoEntities = new ArrayList<>();
+                    for (EstudoEntity estudoEntity : estudosEntities) {
+                        EstudoParagrafoEntity estudoParagrafoEntity = new EstudoParagrafoEntity();
+                        estudoParagrafoEntity.setEstudo(estudoEntity);
+                        estudoParagrafoEntity.setParagrafo(paragrafoEntity);
+                        estudoParagrafoEntities.add(estudoParagrafoEntity);
+                    }
+
+                    this.estudoService.salvarEstudosParagrafo(estudoParagrafoEntities);
+                }
+            }
+        }
+
         return new CadastrarMaterialResponseBuilderImpl()
                 .id(material.getId().toString())
                 .build();

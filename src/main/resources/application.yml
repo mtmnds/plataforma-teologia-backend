@@ -29,11 +29,11 @@ spring:
 cache:
   material:
     home:
-      ttl-miliseconds: 300000
+      ttl-miliseconds: 30000
     paginacao:
-      ttl-miliseconds: 300000
+      ttl-miliseconds: 30000
     detalhe:
-      ttl-miliseconds: 300000
+      ttl-miliseconds: 30000
   capitulo:
     detalhe:
-      ttl-miliseconds: 300000
+      ttl-miliseconds: 30000

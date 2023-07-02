@@ -2,11 +2,13 @@ package br.facens.plataformateologia.domain.model.mapper;
 
 import br.facens.plataformateologia.domain.model.dto.CadastrarMaterialRequestCapituloDTO;
 import br.facens.plataformateologia.domain.model.dto.CadastrarMaterialRequestDTO;
+import br.facens.plataformateologia.domain.model.dto.CadastrarMaterialRequestEstudoDTO;
 import br.facens.plataformateologia.domain.model.dto.CadastrarMaterialRequestParagrafoDTO;
 import br.facens.plataformateologia.domain.model.entity.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class CadastrarMaterialMapper {
@@ -38,6 +40,7 @@ public class CadastrarMaterialMapper {
                 paragrafo.setTitulo(paragrafoRequest.getTitulo());
                 paragrafo.setConteudo(paragrafoRequest.getConteudo());
                 paragrafo.setSequencia(paragrafoRequest.getSequencia());
+
                 capitulo.getParagrafos().add(paragrafo);
             }
 
@@ -45,6 +48,23 @@ public class CadastrarMaterialMapper {
         }
 
         return material;
+    }
+
+    public List<EstudoEntity> map(List<CadastrarMaterialRequestEstudoDTO> estudosDtos) {
+        List<EstudoEntity> estudos = new ArrayList<>();
+
+        for (CadastrarMaterialRequestEstudoDTO estudoDto : estudosDtos) {
+            EstudoEntity estudo = new EstudoEntity();
+            estudo.setTitulo(estudoDto.getTitulo());
+            estudo.setConteudo(estudoDto.getConteudo());
+            estudo.setDataPublicacao(estudoDto.getDataPublicacao());
+            estudo.setDataAprovacao(estudoDto.getDataAprovacao());
+            estudo.setBlockchainId(estudoDto.getBlockchainId());
+            estudo.setAprovado(estudoDto.isAprovado());
+            estudos.add(estudo);
+        }
+
+        return estudos;
     }
 
 }
