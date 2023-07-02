@@ -52,6 +52,7 @@ public class CapituloDetalheDtoBuilderImpl implements CapituloDetalheDtoBuilder 
                         .titulo(item.getTitulo())
                         .conteudo(item.getConteudo())
                         .sequencia(item.getSequencia())
+                        .estudos(item.getEstudos())
                         .build()
                 )
                 .sorted(new Comparator<GenericParagrafoDTO>() {

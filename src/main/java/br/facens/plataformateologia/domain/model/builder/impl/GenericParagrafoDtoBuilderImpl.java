@@ -1,8 +1,9 @@
 package br.facens.plataformateologia.domain.model.builder.impl;
 
 import br.facens.plataformateologia.domain.model.builder.GenericParagrafoDtoBuilder;
-import br.facens.plataformateologia.domain.model.dto.GenericCapituloDTO;
+import br.facens.plataformateologia.domain.model.dto.GenericEstudoParagrafoDTO;
 import br.facens.plataformateologia.domain.model.dto.GenericParagrafoDTO;
+import br.facens.plataformateologia.domain.model.entity.EstudoParagrafoEntity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +39,30 @@ public class GenericParagrafoDtoBuilderImpl implements GenericParagrafoDtoBuilde
     @Override
     public GenericParagrafoDtoBuilder sequencia(int sequencia) {
         this.genericParagrafoDTO.setSequencia(sequencia);
+        return this;
+    }
+
+    @Override
+    public GenericParagrafoDtoBuilder estudos(List<EstudoParagrafoEntity> estudosParagrafo) {
+        List<GenericEstudoParagrafoDTO> estudos = estudosParagrafo
+                .stream()
+                .map(item -> new GenericEstudoParagrafoDtoBuilderImpl()
+                        .id(item.getEstudo().getId().toString())
+                        .titulo(item.getEstudo().getTitulo())
+                        .conteudo(item.getEstudo().getConteudo())
+                        .aprovado(item.getEstudo().isAprovado())
+                        .dataPublicacao(item.getEstudo().getDataPublicacao())
+                        .build()
+                )
+                .sorted(new Comparator<GenericEstudoParagrafoDTO>() {
+                    @Override
+                    public int compare(GenericEstudoParagrafoDTO o1, GenericEstudoParagrafoDTO o2) {
+                        return o1.getDataPublicacao().compareTo(o2.getDataPublicacao());
+                    }
+                })
+                .toList();
+
+        this.genericParagrafoDTO.setEstudos(estudos);
         return this;
     }
 

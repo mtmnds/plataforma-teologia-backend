@@ -7,6 +7,7 @@ public class GenericParagrafoDTO {
     private String id;
     private String titulo;
     private List<String> conteudo;
+    private List<GenericEstudoParagrafoDTO> estudos;
     private int sequencia;
 
     public String getId() {
@@ -31,6 +32,14 @@ public class GenericParagrafoDTO {
 
     public void setConteudo(List<String> conteudo) {
         this.conteudo = conteudo;
+    }
+
+    public List<GenericEstudoParagrafoDTO> getEstudos() {
+        return estudos;
+    }
+
+    public void setEstudos(List<GenericEstudoParagrafoDTO> estudos) {
+        this.estudos = estudos;
     }
 
     public int getSequencia() {
