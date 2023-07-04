@@ -27,7 +27,7 @@ public class EstudoEntity {
     // TODO: Definir objeto para o autor
     // private Object autor;
 
-    @Column(name = "data_aprovacao", nullable = false)
+    @Column(name = "data_aprovacao", nullable = true)
     private Date dataAprovacao;
 
     @Column(name = "blockchain_id", nullable = true)
