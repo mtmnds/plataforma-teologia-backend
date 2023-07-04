@@ -34,6 +34,12 @@ public class GenericEstudoParagrafoDtoBuilderImpl implements GenericEstudoParagr
     }
 
     @Override
+    public GenericEstudoParagrafoDtoBuilder nomeDoAutor(String nomeDoAutor) {
+        genericEstudoParagrafoDTO.setNomeDoAutor(nomeDoAutor);
+        return this;
+    }
+
+    @Override
     public GenericEstudoParagrafoDtoBuilder dataPublicacao(Date dataPublicacao) {
         genericEstudoParagrafoDTO.setDataPublicacao(dataPublicacao);
         return this;

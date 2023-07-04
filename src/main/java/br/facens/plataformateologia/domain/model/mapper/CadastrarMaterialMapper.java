@@ -61,6 +61,7 @@ public class CadastrarMaterialMapper {
             estudo.setDataAprovacao(estudoDto.getDataAprovacao());
             estudo.setBlockchainId(estudoDto.getBlockchainId());
             estudo.setAprovado(estudoDto.isAprovado());
+            estudo.setNomeDoAutor(estudoDto.getNomeDoAutor());
             estudos.add(estudo);
         }
 

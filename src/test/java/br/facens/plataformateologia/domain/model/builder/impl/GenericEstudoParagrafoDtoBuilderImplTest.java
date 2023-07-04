@@ -18,6 +18,7 @@ class GenericEstudoParagrafoDtoBuilderImplTest {
                 .titulo("Titulo teste")
                 .conteudo("Conteudo teste")
                 .aprovado(true)
+                .nomeDoAutor("Autor teste")
                 .dataPublicacao(dataTeste)
                 .build();
 
@@ -26,6 +27,7 @@ class GenericEstudoParagrafoDtoBuilderImplTest {
         assertEquals(dto.getTitulo(), "Titulo teste");
         assertEquals(dto.getConteudo(), "Conteudo teste");
         assertTrue(dto.isAprovado());
+        assertEquals(dto.getNomeDoAutor(), "Autor teste");
         assertEquals(dto.getDataPublicacao(), dataTeste);
     }
 

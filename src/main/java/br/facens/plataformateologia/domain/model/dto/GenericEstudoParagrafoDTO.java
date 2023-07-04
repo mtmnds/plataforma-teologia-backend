@@ -8,6 +8,7 @@ public class GenericEstudoParagrafoDTO {
     private String titulo;
     private String conteudo;
     private boolean aprovado;
+    private String nomeDoAutor;
     private Date dataPublicacao;
 
     public String getId() {
@@ -40,6 +41,14 @@ public class GenericEstudoParagrafoDTO {
 
     public void setAprovado(boolean aprovado) {
         this.aprovado = aprovado;
+    }
+
+    public String getNomeDoAutor() {
+        return nomeDoAutor;
+    }
+
+    public void setNomeDoAutor(String nomeDoAutor) {
+        this.nomeDoAutor = nomeDoAutor;
     }
 
     public Date getDataPublicacao() {

@@ -9,6 +9,7 @@ public class CadastrarMaterialRequestEstudoDTO {
     private Date dataAprovacao;
     private String blockchainId;
     private boolean aprovado;
+    private String nomeDoAutor;
 
     public String getTitulo() {
         return titulo;
@@ -56,5 +57,13 @@ public class CadastrarMaterialRequestEstudoDTO {
 
     public void setAprovado(boolean aprovado) {
         this.aprovado = aprovado;
+    }
+
+    public String getNomeDoAutor() {
+        return nomeDoAutor;
+    }
+
+    public void setNomeDoAutor(String nomeDoAutor) {
+        this.nomeDoAutor = nomeDoAutor;
     }
 }

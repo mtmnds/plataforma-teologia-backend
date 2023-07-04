@@ -9,6 +9,7 @@ public interface GenericEstudoParagrafoDtoBuilder {
     GenericEstudoParagrafoDtoBuilder titulo(String titulo);
     GenericEstudoParagrafoDtoBuilder conteudo(String conteudo);
     GenericEstudoParagrafoDtoBuilder aprovado(boolean aprovado);
+    GenericEstudoParagrafoDtoBuilder nomeDoAutor(String nomeDoAutor);
     GenericEstudoParagrafoDtoBuilder dataPublicacao(Date dataPublicacao);
     GenericEstudoParagrafoDTO build();
 }

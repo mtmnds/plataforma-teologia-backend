@@ -24,9 +24,6 @@ public class EstudoEntity {
     @Column(name = "data_publicacao", nullable = false)
     private Date dataPublicacao;
 
-    // TODO: Definir objeto para o autor
-    // private Object autor;
-
     @Column(name = "data_aprovacao", nullable = true)
     private Date dataAprovacao;
 
@@ -35,6 +32,9 @@ public class EstudoEntity {
 
     @Column(name = "aprovado", nullable = false)
     private boolean aprovado;
+
+    @Column(name = "nome_autor", nullable = true)
+    private String nomeDoAutor;
 
     @OneToMany(mappedBy = "estudo")
     private List<EstudoMaterialEntity> materiais;
@@ -99,6 +99,14 @@ public class EstudoEntity {
 
     public void setAprovado(boolean aprovado) {
         this.aprovado = aprovado;
+    }
+
+    public String getNomeDoAutor() {
+        return nomeDoAutor;
+    }
+
+    public void setNomeDoAutor(String nomeDoAutor) {
+        this.nomeDoAutor = nomeDoAutor;
     }
 
     public List<EstudoMaterialEntity> getMateriais() {

@@ -44,25 +44,29 @@ public class GenericParagrafoDtoBuilderImpl implements GenericParagrafoDtoBuilde
 
     @Override
     public GenericParagrafoDtoBuilder estudos(List<EstudoParagrafoEntity> estudosParagrafo) {
-        List<GenericEstudoParagrafoDTO> estudos = estudosParagrafo
-                .stream()
-                .map(item -> new GenericEstudoParagrafoDtoBuilderImpl()
-                        .id(item.getEstudo().getId().toString())
-                        .titulo(item.getEstudo().getTitulo())
-                        .conteudo(item.getEstudo().getConteudo())
-                        .aprovado(item.getEstudo().isAprovado())
-                        .dataPublicacao(item.getEstudo().getDataPublicacao())
-                        .build()
-                )
-                .sorted(new Comparator<GenericEstudoParagrafoDTO>() {
-                    @Override
-                    public int compare(GenericEstudoParagrafoDTO o1, GenericEstudoParagrafoDTO o2) {
-                        return o1.getDataPublicacao().compareTo(o2.getDataPublicacao());
-                    }
-                })
-                .toList();
+        if (estudosParagrafo != null) {
+            List<GenericEstudoParagrafoDTO> estudos = estudosParagrafo
+                    .stream()
+                    .map(item -> new GenericEstudoParagrafoDtoBuilderImpl()
+                            .id(item.getEstudo().getId().toString())
+                            .titulo(item.getEstudo().getTitulo())
+                            .conteudo(item.getEstudo().getConteudo())
+                            .aprovado(item.getEstudo().isAprovado())
+                            .nomeDoAutor(item.getEstudo().getNomeDoAutor())
+                            .dataPublicacao(item.getEstudo().getDataPublicacao())
+                            .build()
+                    )
+                    .sorted(new Comparator<GenericEstudoParagrafoDTO>() {
+                        @Override
+                        public int compare(GenericEstudoParagrafoDTO o1, GenericEstudoParagrafoDTO o2) {
+                            return o1.getDataPublicacao().compareTo(o2.getDataPublicacao());
+                        }
+                    })
+                    .toList();
 
-        this.genericParagrafoDTO.setEstudos(estudos);
+            this.genericParagrafoDTO.setEstudos(estudos);
+        }
+
         return this;
     }
 
