@@ -37,3 +37,6 @@ cache:
   capitulo:
     detalhe:
       ttl-miliseconds: 60000
+
+token:
+  key: 8iKxrO26c4YWfVsZDiDpkIlFFX1nTz9YJKfBUTEcXaBxdKJiiyblk7kVfR2822ZT
