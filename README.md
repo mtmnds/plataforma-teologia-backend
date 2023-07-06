@@ -40,3 +40,32 @@ Objetivo:
 * Slide 11: Dashboard de métricas - Business Agility.
 * Slide 12: Análise SWOT, Lições aprendidas - Business Agility.
 * Slide 13: Considerações finais.
+
+
+# 2. Build e execução
+
+## 2.1. Requisitos:
+* Java JDK 20.0.1, ou superior com retrocompatibilidade.
+* Maven 3.9.3, ou superior com retrocompatibilidade.
+* Docker 24.0.2, ou superior com retrocompatibilidade.
+
+## 2.2. Build do projeto:
+Executar o comando abaixo na pasta raiz do projeto:
+```
+mvn package
+```
+
+## 2.3. Criação da imagem:
+Executar o comando abaixo na pasta raiz do projeto:
+```
+docker build --tag=plataforma-teologia-backend:latest .
+```
+
+## 2.4. Rodar a aplicação:
+Executar o comando abaixo na pasta raiz do projeto:
+```
+docker run -p8887:8080 plataforma-teologia-backend:latest
+```
+
+> Obs.: O comando "-p8887:8080" mapeia a porta local 8887 para a porta 8080 dentro do container, ou seja, para consumir a aplicação será necessário enviar as requisições para a porta 8887 e o container se encarregará de fazer o redirecionamento para a porta 8080.
+> Exemplo de requisição: GET http://localhost:8887/api/v1/material/home
