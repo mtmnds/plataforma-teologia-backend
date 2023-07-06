@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "8a79abd1-36cc-4d8b-aebb-d3be37bfe216",
+		"name": "BusinessAgility",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5509564"
+	},
+	"item": [
+		{
+			"name": "0. Criar usuário",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"mtmendes\",\r\n    \"password\": \"1234\",\r\n    \"name\": \"Matheus Mendes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0.1. Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"mtmendes\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1. Criar material",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdG1lbmRlcyIsImlhdCI6MTY4ODY4MzU2NiwiZXhwIjoxNjg4Njg1MDA2fQ.AF2yt0bCwJl3uYyBtRtuKQ6d7E0fhDrKU1gOT4ve9vs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Gênesis\",\r\n  \"codigoMaterial\": {\r\n    \"descricao\": \"ISBN\",\r\n    \"valor\": \"978012345678\"\r\n  },\r\n  \"descricao\": \"Esse é o livro das origens, pois conta a origem do mundo, da humanidade e do povo hebreu. Os primeiros capítulos contam a origem da humanidade, desde os dias da criação até o dilúvio. A partir do capítulo 12, é contada a história dos três patriarcas dos hebreus: Abraão, Isaque e Jacó. A história termina com os filhos de Jacó no Egito, preparando a narrativa do livro de Êxodo.<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nisl erat, auctor sit amet augue vitae, rhoncus laoreet augue. Integer vitae sodales ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam erat erat, pellentesque sed risus id, imperdiet viverra diam. Phasellus vestibulum maximus venenatis.<br>Morbi a arcu faucibus, luctus dolor quis, consectetur ex. Praesent sit amet justo vitae nunc dictum vehicula. Donec a urna varius, dapibus sapien sed, tristique risus. Vivamus interdum urna molestie mi tristique sagittis. Morbi tristique volutpat tellus faucibus porta. Pellentesque cursus lorem id auctor aliquam.\",\r\n  \"dataPublicacao\": \"2023-06-20T22:17:38.560Z\",\r\n  \"capitulos\": [\r\n    {\r\n      \"titulo\": \"Gênesis 1\",\r\n      \"descricao\": \"\",\r\n      \"paragrafos\": [\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"1: No princípio, Deus criou os céus e a terra.\",\r\n          \"estudos\": [\r\n              {\r\n                  \"titulo\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\r\n                  \"conteudo\": \"Nullam nisl erat, auctor sit amet augue vitae, rhoncus laoreet augue. Integer vitae sodales ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam erat erat, pellentesque sed risus id, imperdiet viverra diam.\",\r\n                  \"dataPublicacao\": \"2023-06-20T22:17:38.560Z\",\r\n                  \"dataAprovacao\": \"\",\r\n                  \"blockchainId\": \"\",\r\n                  \"aprovado\": false,\r\n                  \"nomeDoAutor\": \"Autor 1\"\r\n              },\r\n              {\r\n                  \"titulo\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\r\n                  \"conteudo\": \"Nullam nisl erat, auctor sit amet augue vitae, rhoncus laoreet augue. Integer vitae sodales ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam erat erat, pellentesque sed risus id, imperdiet viverra diam.\",\r\n                  \"dataPublicacao\": \"2023-06-20T22:17:38.560Z\",\r\n                  \"dataAprovacao\": \"\",\r\n                  \"blockchainId\": \"\",\r\n                  \"aprovado\": false,\r\n                  \"nomeDoAutor\": \"Autor 2\"\r\n              },\r\n              {\r\n                  \"titulo\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\r\n                  \"conteudo\": \"Nullam nisl erat, auctor sit amet augue vitae, rhoncus laoreet augue. Integer vitae sodales ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam erat erat, pellentesque sed risus id, imperdiet viverra diam.\",\r\n                  \"dataPublicacao\": \"2023-06-20T22:17:38.560Z\",\r\n                  \"dataAprovacao\": \"2023-07-01T22:17:38.560Z\",\r\n                  \"blockchainId\": \"\",\r\n                  \"aprovado\": false,\r\n                  \"nomeDoAutor\": \"Autor 3\"\r\n              }\r\n          ],\r\n          \"sequencia\": 1\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"2: A terra estava informe e vazia; as trevas cobriam o abismo e o Espírito de Deus pairava sobre as águas.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 2\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"3: Deus disse: 'Faça-se a luz!' E a luz foi feita.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 3\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"4: Deus viu que a luz era boa, e separou a luz das trevas.\",\r\n          \"estudos\": [\r\n              {\r\n                  \"titulo\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\r\n                  \"conteudo\": \"Nullam nisl erat, auctor sit amet augue vitae, rhoncus laoreet augue. Integer vitae sodales ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam erat erat, pellentesque sed risus id, imperdiet viverra diam.\",\r\n                  \"dataPublicacao\": \"2023-06-20T22:17:38.560Z\",\r\n                  \"dataAprovacao\": \"\",\r\n                  \"blockchainId\": \"\",\r\n                  \"aprovado\": false,\r\n                  \"nomeDoAutor\": \"Autor 1\"\r\n              },\r\n              {\r\n                  \"titulo\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\r\n                  \"conteudo\": \"Nullam nisl erat, auctor sit amet augue vitae, rhoncus laoreet augue. Integer vitae sodales ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam erat erat, pellentesque sed risus id, imperdiet viverra diam.\",\r\n                  \"dataPublicacao\": \"2023-06-20T22:17:38.560Z\",\r\n                  \"dataAprovacao\": \"\",\r\n                  \"blockchainId\": \"\",\r\n                  \"aprovado\": false,\r\n                  \"nomeDoAutor\": \"Autor 4\"\r\n              }\r\n          ],\r\n          \"sequencia\": 4\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"5: Deus chamou à luz DIA, e às trevas NOITE. Sobreveio a tarde e depois a manhã: foi o primeiro dia.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 5\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"6: Deus disse: 'Faça-se um firmamento entre as águas, e separe ele umas das outras'.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 6\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"7: Deus fez o firmamento e separou as águas que estavam debaixo do firmamento daquelas que estavam por cima.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 7\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"8: E assim se fez. Deus chamou ao firmamento CÉUS. Sobreveio a tarde e depois a manhã: foi o segundo dia.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 8\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"9: Deus disse: 'Que as águas que estão debaixo dos céus se ajuntem num mesmo lugar, e apareça o elemento árido.' E assim se fez.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 9\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"10: Deus chamou ao elemento árido TERRA, e ao ajuntamento das águas MAR. E Deus viu que isso era bom.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 10\r\n        }\r\n      ],\r\n      \"estudos\": [],\r\n      \"sequencia\": 1\r\n    },\r\n    {\r\n      \"titulo\": \"Gênesis 2\",\r\n      \"descricao\": \"\",\r\n      \"paragrafos\": [\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Assim foram acabados os céus, a terra e todo seu exército.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 1\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Tendo Deus terminado no sétimo dia a obra que tinha feito, descansou do seu trabalho.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 2\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Ele abençoou o sétimo dia e o consagrou, porque nesse dia repousara de toda a obra da Criação.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 3\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Tal é a história da criação dos céus e da terra.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 4\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"No tempo em que o Senhor Deus fez a terra e os céus, não existia ainda sobre a terra nenhum arbusto nos campos, e nenhuma erva havia ainda brotado nos campos, porque o Senhor Deus não tinha feito chover sobre a terra, nem havia homem que a cultivasse;\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 5\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"mas subia da terra um vapor que regava toda a sua superfície.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 6\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"O Senhor Deus formou, pois, o homem do barro da terra, e inspirou-lhe nas narinas um sopro de vida e o homem se tornou um ser vivente.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 7\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Ora, o Senhor Deus tinha plantado um jardim no Éden, do lado do oriente, e colocou nele o homem que havia criado.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 8\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"O Senhor Deus fez brotar da terra toda sorte de árvores, de aspecto agradável, e de frutos bons para comer; e a árvore da vida no meio do jardim, e a árvore da ciência do bem e do mal.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 9\r\n        }\r\n      ],\r\n      \"estudos\": [],\r\n      \"sequencia\": 2\r\n    },\r\n    {\r\n      \"titulo\": \"Gênesis 3\",\r\n      \"descricao\": \"\",\r\n      \"paragrafos\": [\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"A serpente era o mais astuto de todos os animais dos campos que o Senhor Deus tinha formado. Ela disse a mulher: É verdade que Deus vos proibiu comer do fruto de toda árvore do jardim?\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 1\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"A mulher respondeu-lhe: Podemos comer do fruto das árvores do jardim.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 2\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Mas do fruto da árvore que está no meio do jardim, Deus disse: Vós não comereis dele, nem o tocareis, para que não morrais.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 3\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Oh, não! - tornou a serpente - vós não morrereis!\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 4\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Mas Deus bem sabe que, no dia em que dele comerdes, vossos olhos se abrirão, e sereis como deuses, conhecedores do bem e do mal.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 5\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"A mulher, vendo que o fruto da árvore era bom para comer, de agradável aspecto e mui apropriado para abrir a inteligência, tomou dele, comeu, e o apresentou também ao seu marido, que comeu igualmente.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 6\r\n        }\r\n      ],\r\n      \"estudos\": [],\r\n      \"sequencia\": 2\r\n    },\r\n    {\r\n      \"titulo\": \"Gênesis 4\",\r\n      \"descricao\": \"\",\r\n      \"paragrafos\": [\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Adão conheceu Eva, sua mulher, e ela concebeu e deu à luz Caim, e disse: 'Possuí um homem com a ajuda do Senhor.'\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 1\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"E deu em seguida à luz Abel, irmão de Caim. Abel tornou-se pastor e Caim lavrador.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 2\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Passado algum tempo, ofereceu Caim frutos da terra em oblação ao Senhor.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 3\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Abel, de seu lado, ofereceu dos primogênitos do seu rebanho e das gorduras dele; e o Senhor olhou com agrado para Abel e para sua oblação,\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 4\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"mas não olhou para Caim, nem para os seus dons. Caim ficou extremamente irritado com isso, e o seu semblante tornou-se abatido.\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 5\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"O Senhor disse-lhe: 'Por que estás irado? E por que está abatido o teu semblante?\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 6\r\n        },\r\n        {\r\n          \"titulo\": \"\",\r\n          \"conteudo\": \"Se praticares o bem, sem dúvida alguma poderás reabilitar-te. Mas se precederes mal, o pecado estará à tua porta, espreitando-te; mas, tu deverás dominá-lo.'\",\r\n          \"estudos\": [],\r\n          \"sequencia\": 7\r\n        }\r\n      ],\r\n      \"estudos\": [],\r\n      \"sequencia\": 2\r\n    }\r\n  ],\r\n  \"estudos\": [],\r\n  \"urlImagem\": \"http://localhost:4200/assets/images/posts/genesis.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/material",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"material"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Listar materiais - Home",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/material/home",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"material",
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Buscar com paginação",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/material?numPagina=1&qtdRegistros=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"material"
+					],
+					"query": [
+						{
+							"key": "numPagina",
+							"value": "1"
+						},
+						{
+							"key": "qtdRegistros",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Detalhes do material",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/material/86ef48c2-058c-4ce0-9245-ada8f9c5a10c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"material",
+						"86ef48c2-058c-4ce0-9245-ada8f9c5a10c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Detalhes do capítulo",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/capitulo/45b660e0-438d-478f-b645-8b396fa56f4f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"capitulo",
+						"45b660e0-438d-478f-b645-8b396fa56f4f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Aprovar estudo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdG1lbmRlcyIsImlhdCI6MTY4ODY4MzU2NiwiZXhwIjoxNjg4Njg1MDA2fQ.AF2yt0bCwJl3uYyBtRtuKQ6d7E0fhDrKU1gOT4ve9vs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/estudo/aprovar/d6a7d9c4-cbce-4269-954e-8f2e190605cb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"estudo",
+						"aprovar",
+						"d6a7d9c4-cbce-4269-954e-8f2e190605cb"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
