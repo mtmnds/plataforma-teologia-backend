@@ -69,3 +69,53 @@ docker run -p8887:8080 plataforma-teologia-backend:latest
 
 > Obs.: O comando "-p8887:8080" mapeia a porta local 8887 para a porta 8080 dentro do container, ou seja, para consumir a aplicação será necessário enviar as requisições para a porta 8887 e o container se encarregará de fazer o redirecionamento para a porta 8080.
 > Exemplo de requisição: GET http://localhost:8887/api/v1/material/home
+
+
+# 3. Instruções gerais de uso
+
+## 3.1. Autenticação
+Antes de realizar a autenticação é necessário criar um usuário. Este processo pode ser realizado através da seguinte requisição:
+```
+POST http://localhost:8887/api/v1/auth/signup
+
+Body:
+Content-type = application/json
+
+{
+    "username": "Login do usuário",
+    "password": "Senha do usuário",
+    "name": "Nome do usuário"
+}
+```
+
+Após a criação do usuário será possível realizar o login através da seguinte requisição:
+```
+POST http://localhost:8887/api/v1/auth
+
+Body:
+Content-type = application/json
+
+{
+    "username": "Login do usuário",
+    "password": "Senha do usuário"
+}
+```
+
+O token obtido neste processo é do tipo Bearer, e poderá ser utilizado nas requisições que o exijam adicionando o seguinte Header na requisição:
+Chave: Authorization
+Valor: "Bearer {conteúdo do token}"
+
+
+## 3.2. Documentação
+Para acessar a documentação da aplicação basta abrir a seguinte URL no navegador:
+* http://localhost:8887/api/v1/swagger-ui/index.html
+
+
+## 3.3. Endpoints fechados
+Os seguintes endpoints estão fechados para consumo externo, ou seja, será necessário se autenticar e incluir o token no cabeçalho da requisição para consumí-los:
+* POST http://localhost:8887/api/v1/material
+* POST http://localhost:8887/api/v1/estudo/aprovar/{Id do estudo}
+
+
+## 3.4. Endpoints abertos
+Todos os endpoints que utilizem o método GET estão abertos, ou seja, não é necessário a utilização de um token para consumí-los.
