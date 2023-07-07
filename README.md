@@ -119,3 +119,23 @@ Os seguintes endpoints estão fechados para consumo externo, ou seja, será nece
 
 ## 3.4. Endpoints abertos
 Todos os endpoints que utilizem o método GET estão abertos, ou seja, não é necessário a utilização de um token para consumí-los.
+
+
+# 4. Ferramentas de apoio
+
+## 4.1. Instalação do Jenkins
+1. Executar o comando abaixo:
+```
+docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
+```
+2. Acessar a URL "http://localhost:8080".
+3. Seguir com a configuração padrão.
+4. Instalar os seguintes plugins:
+```
+Pipeline: AWS Steps
+```
+5. Configurar as seguintes tools:
+```
+Git
+Node, com a versão 18.16.1
+```
