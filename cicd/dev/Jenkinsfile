@@ -8,7 +8,7 @@ pipeline {
         target_folder = 'target'
         aws_bucket = 'plataforma-teologia-backend'
     }
-    tools { nodejs 'node' }
+    tools { maven 'maven' }
     stages {
         stage('Checkout') {
             steps {
