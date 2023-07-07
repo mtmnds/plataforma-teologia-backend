@@ -1,0 +1,40 @@
+#!groovy
+
+pipeline {
+    agent any
+    environment {
+        aws_credential = 'AWS_CREDENTIALS'
+        region = 'sa-east-1'
+        target_folder = 'target'
+        aws_bucket = 'plataforma-teologia-backend'
+    }
+    tools { nodejs 'node' }
+    stages {
+        stage('Checkout') {
+            steps {
+                deleteDir()
+                checkout scm
+            }
+        }
+
+        stage('Run tests') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Build application') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                withAWS(region:"${region}", credentials:"${aws_credential}") {
+                    s3Upload(bucket:"${aws_bucket}", path:"", workingDir:"${dist_folder}", includePathPattern:'**/*.jar')
+                }
+        }
+    }
+}
+}
